@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epiak — Conversation Intelligence para WhatsApp</title>
+  <meta name="description" content="Veja o que ninguém vê nas conversas da sua empresa. O Epiak analisa 100% dos atendimentos do seu WhatsApp e envia os alertas que importam direto pra você.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────── -->
+  <nav>
+    <div class="container">
+      <a class="nav-logo" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="110 30 280 105" width="140" height="52">
+          <text x="250" y="125" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="76" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">
+            ep&#305;ak
+          </text>
+          <path d="M 242.5 60 L 254.5 42 L 266.5 60 L 258.5 60 L 254.5 54 L 250.5 60 Z" fill="#CCFF00"/>
+          <circle cx="254.5" cy="36" r="2.5" fill="#CCFF00"/>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#problema">Problema</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#detecta">O que detecta</a></li>
+        <li><a href="#planos">Planos</a></li>
+        <li><a href="#contato" class="nav-cta">Falar com a gente</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container hero-container">
+      
+      <!-- Left Column: Copy & Actions -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Conversation Intelligence para WhatsApp
+        </div>
+        <h1>
+          Veja o que <span class="accent">ninguém vê</span><br>
+          nas suas conversas.
+        </h1>
+        <p class="hero-sub">
+          O Epiak analisa 100% dos atendimentos do seu WhatsApp e envia, todo dia, apenas os que precisam da sua atenção. Antes que virem problema.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#contato" class="btn-primary">Começar gratuitamente</a>
+          <a href="#como-funciona" class="btn-secondary">Como funciona</a>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Demo Card -->
+      <div class="hero-demo">
+        
+        <!-- Scenario Switcher Tabs (Clínica & Viagens first) -->
+        <div class="scenario-tabs">
+          <button class="scenario-tab active" data-index="0">🏥 Clínica Médica</button>
+          <button class="scenario-tab" data-index="1">✈️ Agência de Viagens</button>
+          <button class="scenario-tab" data-index="2">🚗 Concessionária</button>
+          <button class="scenario-tab" data-index="3">💼 B2B / Serviços</button>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-header">
+            <span class="status-dot"></span>
+            <span class="demo-header-text">Atendimento ao vivo — Clínica</span>
+          </div>
+          <div class="demo-body" id="demoBody">
+
+            <!-- Phase 1: WhatsApp Chat -->
+            <div class="chat-phase" id="chatPhase"></div>
+
+            <!-- Phase 2: Epiak Analysis -->
+            <div class="analysis-phase" id="analysisPhase"></div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── PROBLEM ──────────────────────────────────── -->
+  <section class="problem" id="problema">
+    <div class="container">
+      <span class="section-label">O problema</span>
+      <h2 class="section-title">Seu atendimento é uma caixa preta.</h2>
+      <p class="section-desc">
+        Sua equipe troca centenas de mensagens por dia no WhatsApp. Você não tem como ler todas. Quando descobre que algo deu errado, já é tarde.
+      </p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="icon">🔇</div>
+          <h3>Clientes insatisfeitos invisíveis</h3>
+          <p>Você só descobre que o atendimento foi ruim quando o cliente reclama no Google, no ReclameAqui — ou simplesmente some.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">⏱️</div>
+          <h3>Ninguém tem tempo de ler tudo</h3>
+          <p>Supervisores fazem amostragem de 5-10 conversas por dia. Os problemas graves estão nas outras 490 que ninguém leu.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">⚖️</div>
+          <h3>Riscos jurídicos escondidos</h3>
+          <p>Um cliente mencionou Procon, processo ou advogado numa conversa de terça. Você descobriu na sexta. Pelo processo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ─────────────────────────────── -->
+  <section class="how" id="como-funciona">
+    <div class="container">
+      <span class="section-label">Como funciona</span>
+      <h2 class="section-title">Simples assim. Sem dashboard, sem app.</h2>
+      <p class="section-desc">
+        Epiak conecta no WhatsApp da sua empresa, analisa cada conversa com IA, e entrega o que importa direto no seu Zap.
+      </p>
+      <div class="steps">
+        <div class="step">
+          <h3>Conecte</h3>
+          <p>Você escaneia um QR code uma única vez. O Epiak se conecta ao WhatsApp da empresa e começa a monitorar as conversas automaticamente.</p>
+        </div>
+        <div class="step">
+          <h3>A IA analisa</h3>
+          <p>No fim de cada dia, o Epiak lê 100% das conversas encerradas. Identifica emoções, falhas, riscos e oportunidades que um humano não conseguiria ver em escala.</p>
+        </div>
+        <div class="step">
+          <h3>Você recebe</h3>
+          <p>Todo dia, um resumo chega direto no seu WhatsApp com os atendimentos mais críticos. Sem login, sem dashboard, sem fricção.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DETECTIONS ───────────────────────────────── -->
+  <section class="detections" id="detecta">
+    <div class="container">
+      <span class="section-label">O que o Epiak detecta</span>
+      <h2 class="section-title">Tudo que deveria chegar até você — mas não chega.</h2>
+      <p class="section-desc">
+        A IA analisa o texto de cada conversa e identifica padrões que precisam de atenção humana.
+      </p>
+      <div class="detect-grid">
+        <div class="detect-item">
+          <span class="emoji">🔴</span>
+          Cliente ameaçando cancelar
+        </div>
+        <div class="detect-item">
+          <span class="emoji">⚖️</span>
+          Menção a Procon ou processo
+        </div>
+        <div class="detect-item">
+          <span class="emoji">😤</span>
+          Reclamação grave sem resposta
+        </div>
+        <div class="detect-item">
+          <span class="emoji">🤖</span>
+          Falha do chatbot
+        </div>
+        <div class="detect-item">
+          <span class="emoji">⏰</span>
+          Cliente esperando demais
+        </div>
+        <div class="detect-item">
+          <span class="emoji">👻</span>
+          Conversa abandonada
+        </div>
+        <div class="detect-item">
+          <span class="emoji">💰</span>
+          Lead quente ignorado
+        </div>
+        <div class="detect-item">
+          <span class="emoji">😡</span>
+          Atendente grosseiro
+        </div>
+        <div class="detect-item">
+          <span class="emoji">❌</span>
+          Informação incorreta
+        </div>
+        <div class="detect-item">
+          <span class="emoji">🔁</span>
+          Problema recorrente em massa
+        </div>
+        <div class="detect-item">
+          <span class="emoji">🚪</span>
+          Motivo de cancelamento
+        </div>
+        <div class="detect-item">
+          <span class="emoji">📉</span>
+          Encerramento prematuro
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRICING ──────────────────────────────────── -->
+  <section class="pricing" id="planos">
+    <div class="container">
+      <span class="section-label" style="text-align:center;display:block;">Planos</span>
+      <h2 class="section-title">Um cliente salvo já paga o ano inteiro.</h2>
+      <p class="section-desc">
+        Quanto custa perder um cliente porque ninguém leu a conversa dele? O Epiak custa menos que um almoço por dia.
+      </p>
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <span class="plan-name">Starter</span>
+          <div class="price">
+            <span class="currency">R$</span>197<span class="period">/mês</span>
+          </div>
+          <p class="price-desc">Para operações pequenas com 1 número.</p>
+          <ul>
+            <li>1 número de WhatsApp</li>
+            <li>Até 500 conversas/mês</li>
+            <li>Relatório diário no WhatsApp</li>
+            <li>Análise de sentimento e NPS</li>
+            <li>Alertas de risco jurídico</li>
+          </ul>
+          <a href="#contato" class="btn-secondary">Começar</a>
+        </div>
+
+        <div class="price-card featured">
+          <span class="plan-name">Pro</span>
+          <div class="price">
+            <span class="currency">R$</span>497<span class="period">/mês</span>
+          </div>
+          <p class="price-desc">Para empresas com múltiplos setores.</p>
+          <ul>
+            <li>Até 3 números de WhatsApp</li>
+            <li>Até 3.000 conversas/mês</li>
+            <li>Tudo do Starter</li>
+            <li>Ranking de atendentes</li>
+            <li>Detecção de padrões recorrentes</li>
+            <li>Suporte prioritário</li>
+          </ul>
+          <a href="#contato" class="btn-primary">Começar</a>
+        </div>
+
+        <div class="price-card">
+          <span class="plan-name">Business</span>
+          <div class="price">
+            <span class="currency">R$</span>997<span class="period">/mês</span>
+          </div>
+          <p class="price-desc">Para operações de grande escala.</p>
+          <ul>
+            <li>Até 10 números de WhatsApp</li>
+            <li>Até 15.000 conversas/mês</li>
+            <li>Tudo do Pro</li>
+            <li>Relatórios semanais consolidados</li>
+            <li>Insights de tendências</li>
+            <li>Onboarding dedicado</li>
+          </ul>
+          <a href="#contato" class="btn-secondary">Falar com vendas</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ──────────────────────────────────────── -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <span class="section-label">Perguntas frequentes</span>
+      <h2 class="section-title">Dúvidas? A gente responde.</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Preciso instalar alguma coisa?
+            <span class="chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Não. Você só escaneia um QR code uma vez (como faz pra abrir o WhatsApp Web) e pronto. Sem app, sem software, sem instalação.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Os atendentes sabem que estão sendo monitorados?
+            <span class="chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Isso fica a seu critério. O Epiak opera de forma invisível — não aparece nas conversas nem interfere no fluxo de atendimento. Muitas empresas optam por informar a equipe como parte da cultura de qualidade.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Como recebo os relatórios?
+            <span class="chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Direto no seu WhatsApp pessoal, todo dia no horário que você preferir. Sem precisar de login em nenhuma plataforma. Você lê em 2 minutos.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            E a privacidade dos dados?
+            <span class="chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>As conversas são processadas de forma automatizada pela IA e não são armazenadas após a análise. O Epiak segue as diretrizes da LGPD e os dados nunca são compartilhados com terceiros.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Funciona com qualquer tipo de empresa?
+            <span class="chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim. Clínicas, concessionárias, e-commerces, escritórios, escolas — qualquer negócio que atende clientes pelo WhatsApp se beneficia. A IA se adapta ao contexto de cada conversa automaticamente.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Posso testar antes de assinar?
+            <span class="chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim. Oferecemos 7 dias gratuitos pra você ver o Epiak funcionando na prática com as conversas reais da sua empresa. Sem compromisso.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA FINAL ────────────────────────────────── -->
+  <section class="final-cta" id="contato">
+    <div class="container">
+      <span class="section-label">Comece agora</span>
+      <h2 class="section-title">
+        Descubra o que está acontecendo<br>nas suas conversas. Hoje.
+      </h2>
+      <p class="section-desc">
+        Configure em 2 minutos. Receba seu primeiro relatório amanhã. Sem cartão de crédito.
+      </p>
+      <a href="https://wa.me/5592000000000?text=Quero%20testar%20o%20Epiak" class="btn-primary" target="_blank">
+        Falar com a gente no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ───────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Epiak. Todos os direitos reservados.</p>
+      <p><a href="#">Termos</a> · <a href="#">Privacidade</a></p>
+    </div>
+  </footer>
+
+  <!-- ─── FAQ Toggle & Multi-Scenario Interactive Engine ─── -->
+  <script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // ─── Interactive Multi-Scenario Engine ───
+    const SCENARIOS = [
+      {
+        id: 'clinica',
+        name: 'Clínica Médica',
+        headerLive: 'Atendimento ao vivo — Clínica Médica',
+        headerReport: 'Relatório Diário — Epiak Intelligence',
+        messages: [
+          { type: 'customer', name: 'Cliente', time: '09:01', text: 'Oi! Vc consegue meus laudos de exame? Não tô conseguindo baixar pelo site.' },
+          { type: 'agent', name: 'Atendente', time: '09:04', text: 'Nome completo e data de realização, por gentileza.' },
+          { type: 'customer', name: 'Cliente', time: '09:05', text: 'João da Silva. Queria o histórico completo se possível 🙏' },
+          { type: 'agent', name: 'Atendente', time: '09:29', text: '📄 laudo_2024.pdf — Disponha, tenha um bom dia! 👋' },
+          { type: 'customer', name: 'Cliente', time: '09:30', text: 'Obrigado! Mas vc só achou esse? Queria os outros...' },
+          { type: 'system', name: 'Bot', time: '', text: '🤖 Atendimento encerrado. "Desculpe, digite um número de 1 a 5 para avaliar."' }
+        ],
+        analysis: {
+          tag: '🔴 Risco Alto',
+          journey: 'Neutro → Frustrado',
+          alerts: [
+            { sev: 'high', label: 'Alto', title: 'Problema não resolvido.', desc: 'Cliente pediu histórico completo; atendente enviou 1 arquivo e encerrou.' },
+            { sev: 'medium', label: 'Médio', title: 'Bloqueio no chatbot.', desc: 'Pesquisa de satisfação travou o cliente e impediu reabertura do suporte.' }
+          ],
+          scores: [
+            { label: 'Empatia', val: '2', cls: 'bad' },
+            { label: 'Clareza', val: '5', cls: 'ok' },
+            { label: 'Resolução', val: '1', cls: 'bad' },
+            { label: 'NPS', val: '1', cls: 'bad' }
+          ]
+        }
+      },
+      {
+        id: 'viagens',
+        name: 'Agência de Viagens',
+        headerLive: 'Atendimento ao vivo — Agência de Viagens',
+        headerReport: 'Relatório Diário — Epiak Intelligence',
+        messages: [
+          { type: 'customer', name: 'Cliente', time: '14:10', text: 'Boa tarde! Nosso voo da viagem foi cancelado, estamos no aeroporto!' },
+          { type: 'agent', name: 'Atendente', time: '14:15', text: 'Olá! Sentimos muito. Você comprou o seguro viagem junto com o pacote?' },
+          { type: 'customer', name: 'Cliente', time: '14:16', text: 'Sim, pacote completo! Precisamos realocar no próximo voo e avisar o hotel 🙏' },
+          { type: 'agent', name: 'Atendente', time: '14:28', text: 'Abri chamado para o setor de reservas. Prazo de resposta: até 48 horas úteis.' },
+          { type: 'customer', name: 'Cliente', time: '14:29', text: '48h?! Nosso voo sai em 2h, vamos perder o transfer e a diária toda!' },
+          { type: 'system', name: 'Sistema', time: '', text: '⚠️ Atendimento colocado na fila geral sem priorização de urgência aeroportuária' }
+        ],
+        analysis: {
+          tag: '🔴 Risco Crítico / Procon',
+          journey: 'Desesperado → Revoltado',
+          alerts: [
+            { sev: 'high', label: 'Alto', title: 'Emergência crítica tratada como fila.', desc: 'Cliente no aeroporto recebeu SLA padrão de 48h para emergência de 2 horas.' },
+            { sev: 'medium', label: 'Médio', title: 'Risco de processo e dano moral.', desc: 'Perda de diárias e transfers de alto valor por inação do suporte.' }
+          ],
+          scores: [
+            { label: 'Empatia', val: '1', cls: 'bad' },
+            { label: 'Clareza', val: '3', cls: 'bad' },
+            { label: 'Resolução', val: '0', cls: 'bad' },
+            { label: 'NPS', val: '0', cls: 'bad' }
+          ]
+        }
+      },
+      {
+        id: 'auto',
+        name: 'Concessionária',
+        headerLive: 'Atendimento ao vivo — Concessionária',
+        headerReport: 'Relatório Diário — Epiak Intelligence',
+        messages: [
+          { type: 'customer', name: 'Cliente', time: '15:46', text: 'Boa tarde! Como ficou a revisão do meu carro? Qual a previsão de entrega?' },
+          { type: 'agent', name: 'Consultor', time: '17:25', text: 'Boa tarde senhor, entrega amanhã às 11:00 h.' },
+          { type: 'customer', name: 'Cliente', time: '17:29', text: 'Posso buscar às 17h? De manhã fica complicado pra mim.' },
+          { type: 'agent', name: 'Consultor', time: '17:30', text: 'Perfeito, até às 17:00.' },
+          { type: 'customer', name: 'Cliente', time: '17:15', text: 'Cheguei aqui na loja e falaram que o carro nem mexeram ainda...' },
+          { type: 'system', name: 'Sistema', time: '', text: '⚠️ Mensagem crítica sem resposta do consultor há 2h40' }
+        ],
+        analysis: {
+          tag: '🔴 Risco Crítico',
+          journey: 'Confiante → Indignado',
+          alerts: [
+            { sev: 'high', label: 'Alto', title: 'Promessa de prazo descumprida.', desc: 'Cliente foi retirar o veículo no horário acordado e o serviço não foi realizado.' },
+            { sev: 'medium', label: 'Médio', title: 'Falha grave de alinhamento.', desc: 'Consultor confirmou horário sem checar oficina; cliente ignorado no pós-fato.' }
+          ],
+          scores: [
+            { label: 'Empatia', val: '2', cls: 'bad' },
+            { label: 'Clareza', val: '3', cls: 'bad' },
+            { label: 'Resolução', val: '0', cls: 'bad' },
+            { label: 'NPS', val: '0', cls: 'bad' }
+          ]
+        }
+      },
+      {
+        id: 'b2b',
+        name: 'B2B / Serviços',
+        headerLive: 'Atendimento ao vivo — B2B / Serviços',
+        headerReport: 'Relatório Diário — Epiak Intelligence',
+        messages: [
+          { type: 'customer', name: 'Cliente', time: '10:44', text: 'Oi! Preciso emitir uma NFS-e urgente pra faturar hoje.' },
+          { type: 'agent', name: 'Bot', time: '10:45', text: '🤖 Selecione: 1-Impostos, 2-Primeiro Pagamento, 3-Nota Fiscal' },
+          { type: 'customer', name: 'Cliente', time: '10:47', text: '3' },
+          { type: 'agent', name: 'Atendente', time: '10:48', text: 'Olá! A emissão de notas é feita direto no portal da prefeitura.' },
+          { type: 'customer', name: 'Cliente', time: '10:49', text: 'Mas vocês sempre geravam por aqui, mudou o processo?' },
+          { type: 'system', name: 'Sistema', time: '', text: '⚠️ Atendimento encerrado. "Dúvidas envie e-mail para suporte@..."' }
+        ],
+        analysis: {
+          tag: '🟡 Risco Moderado',
+          journey: 'Ansioso → Desamparado',
+          alerts: [
+            { sev: 'high', label: 'Alto', title: 'Encerramento abrupto de chamado.', desc: 'Atendente finalizou o chat sem tirar a dúvida do cliente em situação urgente.' },
+            { sev: 'medium', label: 'Médio', title: 'Risco de insatisfação / Churn.', desc: 'Cliente B2B pagante teve experiência impessoal e sem direcionamento claro.' }
+          ],
+          scores: [
+            { label: 'Empatia', val: '2', cls: 'bad' },
+            { label: 'Clareza', val: '4', cls: 'ok' },
+            { label: 'Resolução', val: '2', cls: 'bad' },
+            { label: 'NPS', val: '2', cls: 'bad' }
+          ]
+        }
+      }
+    ];
+
+    let currentScenarioIdx = 0;
+    let animationSessionId = 0;
+
+    const chatPhase = document.getElementById('chatPhase');
+    const analysisPhase = document.getElementById('analysisPhase');
+    const headerText = document.querySelector('.demo-header-text');
+    const tabBtns = document.querySelectorAll('.scenario-tab');
+
+    function renderScenario(scenario) {
+      // Build Chat HTML
+      chatPhase.innerHTML = scenario.messages.map(m => {
+        if (m.type === 'system') {
+          return `
+            <div class="chat-msg system">
+              <div class="chat-bubble system-bubble">${m.text}</div>
+            </div>`;
+        }
+        return `
+          <div class="chat-msg ${m.type}">
+            <div class="chat-bubble ${m.type}-bubble">
+              <span class="chat-name">${m.name}</span>
+              ${m.text}
+              <span class="chat-time">${m.time}</span>
+            </div>
+          </div>`;
+      }).join('');
+
+      // Build Analysis HTML
+      const a = scenario.analysis;
+      const alertsHtml = a.alerts.map(alt => `
+        <div class="demo-alert ${alt.sev} analysis-item">
+          <span class="severity">${alt.label}</span>
+          <div class="desc">
+            <strong>${alt.title}</strong> ${alt.desc}
+          </div>
+        </div>
+      `).join('');
+
+      const scoresHtml = a.scores.map(s => `
+        <div class="demo-score">
+          <div class="label">${s.label}</div>
+          <div class="value ${s.cls}">${s.val}</div>
+        </div>
+      `).join('');
+
+      analysisPhase.innerHTML = `
+        <div class="analysis-meta analysis-item">
+          <span class="analysis-tag">${a.tag}</span>
+          <span class="analysis-journey">Jornada: <strong>${a.journey}</strong></span>
+        </div>
+        ${alertsHtml}
+        <div class="demo-scores analysis-item">
+          ${scoresHtml}
+        </div>
+      `;
+    }
+
+    async function runScenarioLoop(sessionId) {
+      while (sessionId === animationSessionId) {
+        const scenario = SCENARIOS[currentScenarioIdx];
+        renderScenario(scenario);
+
+        // Update tabs UI
+        tabBtns.forEach((b, i) => {
+          b.classList.toggle('active', i === currentScenarioIdx);
+        });
+
+        // Reset elements state
+        analysisPhase.classList.remove('active');
+        chatPhase.style.display = 'flex';
+        chatPhase.classList.remove('fading');
+
+        const chatMsgs = chatPhase.querySelectorAll('.chat-msg');
+        const analysisItems = analysisPhase.querySelectorAll('.analysis-item');
+
+        chatMsgs.forEach(m => m.classList.remove('visible'));
+        analysisItems.forEach(ai => ai.classList.remove('visible'));
+
+        if (headerText) headerText.textContent = scenario.headerLive;
+
+        // Phase 1: Animate chat messages
+        for (let i = 0; i < chatMsgs.length; i++) {
+          if (sessionId !== animationSessionId) return;
+          await new Promise(r => setTimeout(r, i === 0 ? 350 : 1100));
+          if (sessionId !== animationSessionId) return;
+          chatMsgs[i].classList.add('visible');
+        }
+
+        // Pause to read
+        if (sessionId !== animationSessionId) return;
+        await new Promise(r => setTimeout(r, 3400));
+
+        // Transition: Fade out chat
+        if (sessionId !== animationSessionId) return;
+        chatPhase.classList.add('fading');
+        await new Promise(r => setTimeout(r, 350));
+        if (sessionId !== animationSessionId) return;
+        chatPhase.style.display = 'none';
+
+        // Phase 2: Show Analysis
+        if (headerText) headerText.textContent = scenario.headerReport;
+        analysisPhase.classList.add('active');
+
+        for (let i = 0; i < analysisItems.length; i++) {
+          if (sessionId !== animationSessionId) return;
+          await new Promise(r => setTimeout(r, 280));
+          if (sessionId !== animationSessionId) return;
+          analysisItems[i].classList.add('visible');
+        }
+
+        // Hold analysis view
+        if (sessionId !== animationSessionId) return;
+        await new Promise(r => setTimeout(r, 7000));
+
+        // Advance to next scenario
+        currentScenarioIdx = (currentScenarioIdx + 1) % SCENARIOS.length;
+      }
+    }
+
+    function switchScenario(idx) {
+      currentScenarioIdx = idx;
+      animationSessionId++;
+      runScenarioLoop(animationSessionId);
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-index'), 10);
+        switchScenario(idx);
+      });
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      runScenarioLoop(animationSessionId);
+    });
+  </script>
+
+</body>
+</html>
