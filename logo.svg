@@ -4,9 +4,9 @@
         ep&#305;ak
     </text>
 
-    <!-- Símbolo / Acento Circunflexo Customizado (Perfeitamente centralizado no i em x=254.5) -->
-    <path d="M 242.5 60 L 254.5 42 L 266.5 60 L 258.5 60 L 254.5 54 L 250.5 60 Z" fill="#CCFF00"/>
+    <!-- Símbolo / Acento Circunflexo Customizado (Alinhado com exatidão matemática ao centro do stem do i em x=249.9) -->
+    <path d="M 237.9 60 L 249.9 42 L 261.9 60 L 253.9 60 L 249.9 54 L 245.9 60 Z" fill="#CCFF00"/>
     
-    <!-- Detalhe sutil tecnológico: pequeno ponto de luz -->
-    <circle cx="254.5" cy="36" r="2.5" fill="#CCFF00"/>
+    <!-- Detalhe sutil tecnológico: ponto centralizado no mesmo eixo x=249.9 -->
+    <circle cx="249.9" cy="36" r="2.5" fill="#CCFF00"/>
 </svg>
