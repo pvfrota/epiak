@@ -16,9 +16,9 @@
 
   <!-- ─── NAV ──────────────────────────────────────── -->
   <nav>
-    <div class="container">
+    <div class="container nav-container">
       <a class="nav-logo" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="110 30 280 105" width="140" height="52">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="110 30 280 105" width="130" height="48">
           <text x="250" y="125" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="76" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">
             ep&#305;ak
           </text>
@@ -26,12 +26,20 @@
           <circle cx="254.5" cy="36" r="2.5" fill="#CCFF00"/>
         </svg>
       </a>
-      <ul class="nav-links">
-        <li><a href="#problema">Problema</a></li>
-        <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#detecta">O que detecta</a></li>
-        <li><a href="#planos">Planos</a></li>
-        <li><a href="#contato" class="nav-cta">Falar com a gente</a></li>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#problema" class="nav-link-item">Problema</a></li>
+        <li><a href="#como-funciona" class="nav-link-item">Como funciona</a></li>
+        <li><a href="#detecta" class="nav-link-item">O que detecta</a></li>
+        <li><a href="#planos" class="nav-link-item">Planos</a></li>
+        <li><a href="#contato" class="nav-cta nav-link-item">Falar com a gente</a></li>
       </ul>
     </div>
   </nav>
@@ -621,6 +629,26 @@
         switchScenario(idx);
       });
     });
+
+    // ─── Mobile Menu Toggle ───
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    if (mobileBtn && navLinks) {
+      mobileBtn.addEventListener('click', () => {
+        mobileBtn.classList.toggle('open');
+        navLinks.classList.toggle('open');
+        document.body.classList.toggle('menu-open');
+      });
+
+      document.querySelectorAll('.nav-link-item').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileBtn.classList.remove('open');
+          navLinks.classList.remove('open');
+          document.body.classList.remove('menu-open');
+        });
+      });
+    }
 
     window.addEventListener('DOMContentLoaded', () => {
       runScenarioLoop(animationSessionId);
