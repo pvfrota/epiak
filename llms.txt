@@ -1,0 +1,73 @@
+# Epiak — Conversation Intelligence para WhatsApp
+
+> O Epiak é uma plataforma de inteligência conversacional voltada para empresas que utilizam o WhatsApp como canal primário de atendimento e vendas. A solução analisa 100% dos históricos de conversa da equipe e gera relatórios executivos diários contendo apenas os alertas e atendimentos que exigem intervenção humana e decisões de gestão.
+
+## O Que é o Epiak
+
+O Epiak resolve o problema da "caixa preta" no atendimento via WhatsApp, onde supervisores e gestores conseguem auditar apenas uma pequena amostragem (5 a 10 atendimentos por dia), deixando escapar erros graves, clientes insatisfeitos e oportunidades comerciais de alto valor.
+
+- **Site Oficial:** https://www.epiak.com.br
+- **Proposta de Valor:** Veja o que ninguém vê nas conversas da sua empresa.
+- **Tipo de Produto:** Software as a Service (SaaS) / Conversation Intelligence / B2B
+
+---
+
+## O Que o Epiak Detecta
+
+A inteligência do Epiak processa todas as mensagens trocadas e classifica eventos em quatro categorias principais:
+
+1. **Falhas no Atendimento:**
+   - Promessas não cumpridas ao cliente
+   - Grosseria, rispidez ou falta de empatia
+   - Encerramento prematuro sem resolução do problema
+   - Respostas incorretas sobre produtos, regras ou serviços
+
+2. **Oportunidades de Vendas:**
+   - Leads com alta intenção de compra sem retorno
+   - Clientes pedindo orçamento ou cotação esquecidos
+   - Menção a concorrentes
+   - Oportunidades de cross-sell e upsell ignoradas
+
+3. **Gargalos e Tempo de Resposta:**
+   - Demora excessiva na primeira resposta ou entre mensagens
+   - Atendimentos abandonados no meio do fluxo
+   - Horários de pico com sobrecarga de atendentes
+
+4. **Satisfação e Sentimento:**
+   - Clientes insatisfeitos antes que façam reclamações públicas (ex: Google, ReclameAqui)
+   - Tom de voz e sentimento de cada conversa
+   - Reincidência de problemas crônicos
+
+---
+
+## Como Funciona a Integração
+
+1. **Conexão Simples (10 segundos):**
+   - **WhatsApp Normal / Business no celular:** Conexão direta via leitura de QR Code (semelhante ao WhatsApp Web).
+   - **WhatsApp API Oficial (WABA / Cloud API):** Conexão via Webhook ou chave de API da plataforma de atendimento/CRM existente (ex: Blip, RD Station, Kommo, Z-API).
+2. **Processamento Seguro:** Os atendimentos são analisados em lote com privacidade de ponta a ponta e conformidade com a LGPD.
+3. **Resumo Executivo Diário:** O gestor recebe um relatório diário consolidado direto no seu WhatsApp ou e-mail com os alertas críticos, oportunidades e métricas de desempenho.
+
+---
+
+## Setores Atendidos
+
+- **Clínicas Médicas e Odontológicas:** Identificação de pacientes sem laudos, agendamentos perdidos e falhas de suporte pós-consulta.
+- **Agências de Viagens e Turismo:** Alertas de cancelamentos urgentes, solicitações de seguro viagem e cotações de pacotes de alto valor.
+- **Concessionárias e Oficinas Automotivas:** Acompanhamento de revisões, orçamentos mecânicos pendentes e leads de veículos novos/seminovos.
+- **B2B, Imobiliárias e Serviços em Geral:** Qualificação de propostas comerciais e redução de churn de clientes.
+
+---
+
+## Planos e Preços
+
+- **Starter:** Ideal para pequenas empresas e validação inicial (até 3 atendentes, análise diária de conversas, alertas críticos via WhatsApp).
+- **Pro:** Para empresas em expansão (atendentes ilimitados, análise completa com relatórios avançados de sentimento e tempo de resposta).
+- **Enterprise:** Para grandes operações e redes (integrações customizadas via Webhook/API, relatórios dedicados e SLA prioritário).
+
+---
+
+## Contato e Acesso
+
+- **Website:** https://www.epiak.com.br
+- **Acesso Gratuito:** Formulário de cadastro disponível no site oficial para início imediato.
