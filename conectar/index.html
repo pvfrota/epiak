@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="google" content="notranslate">
+  <title>Conectar WhatsApp — Epiak Conversation Intelligence</title>
+  <meta name="description" content="Conecte seu WhatsApp ao Epiak Conversation Intelligence de forma segura e rápida.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.epiak.com.br/conectar">
+  <meta property="og:site_name" content="Epiak">
+  <meta property="og:title" content="Conectar WhatsApp — Epiak Conversation Intelligence">
+  <meta property="og:description" content="Escaneie o QR Code para conectar seu WhatsApp corporativo ao Epiak.">
+  <meta property="og:image" content="https://www.epiak.com.br/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- QRCode.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --bg-primary: #050505;
+      --bg-secondary: #0D0D0D;
+      --bg-card: #111111;
+      --border-subtle: #1C1C1C;
+      --border-card: #262626;
+
+      --text-primary: #F5F5F5;
+      --text-secondary: #A0A0A0;
+      --text-tertiary: #666666;
+
+      --accent: #CCFF00;
+      --accent-dim: rgba(204, 255, 0, 0.12);
+      --accent-glow: rgba(204, 255, 0, 0.06);
+
+      --green: #34C759;
+      --green-dim: rgba(52, 199, 89, 0.15);
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.5rem 1rem;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto 1.5rem auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 38px;
+      width: auto;
+    }
+
+    /* Main Container */
+    main {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    .client-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .client-badge-icon {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: #FFFFFF;
+    }
+
+    .subtitle {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.75rem;
+    }
+
+    /* QR Code Display Box */
+    .qr-wrapper {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-bottom: 1.75rem;
+      width: 280px;
+      height: 280px;
+    }
+
+    .qr-box {
+      width: 250px;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .qr-box img, .qr-box canvas {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Steps List */
+    .steps-container {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.25rem 1rem;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+
+    .steps-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-tertiary);
+      margin-bottom: 0.75rem;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.65rem;
+      line-height: 1.4;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-num {
+      background: var(--border-card);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.75rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-text strong {
+      color: #FFFFFF;
+    }
+
+    /* Notice & Security Badge */
+    .notice {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
+    .security-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin-top: 0.5rem;
+    }
+
+    .security-badge svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+    }
+
+    /* Fallback / Error State */
+    .error-card {
+      padding: 2rem 1rem;
+      color: var(--text-secondary);
+    }
+    .error-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: 520px;
+      margin: 1.5rem auto 0 auto;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://www.epiak.com.br" class="logo-link">
+      <img src="/logo.svg" alt="Epiak" class="logo-img">
+    </a>
+  </header>
+
+  <main>
+    <div id="clientBadgeContainer" style="display: none;">
+      <div class="client-badge">
+        <span class="client-badge-icon">🏢</span>
+        <span id="clientName">Empresa</span>
+      </div>
+    </div>
+
+    <h1>Conectar WhatsApp</h1>
+    <p class="subtitle">Escaneie o QR Code abaixo com o celular da sua empresa para ativar a inteligência Epiak.</p>
+
+    <!-- QR Code Box -->
+    <div class="qr-wrapper" id="qrWrapper">
+      <div class="qr-box" id="qrcodeBox">
+        <span style="color: #666; font-size: 0.8125rem;">Carregando código...</span>
+      </div>
+    </div>
+
+    <!-- Error State (if no QR parameter) -->
+    <div id="errorState" style="display: none;" class="error-card">
+      <div class="error-icon">⚠️</div>
+      <h3 style="color: #FFF; font-size: 1.05rem; margin-bottom: 0.5rem;">Nenhum código informado</h3>
+      <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.4;">
+        Este link não possui os dados do QR code de conexão. Solicite um novo link à equipe do Epiak ou acesse o painel.
+      </p>
+    </div>
+
+    <!-- Instructions -->
+    <div class="steps-container" id="stepsContainer">
+      <div class="steps-title">Passo a passo no seu celular:</div>
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-text">Abra o <strong>WhatsApp</strong> no celular que atende os clientes.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-text">Acesse <strong>Configurações</strong> (ou <strong>3 pontinhos</strong>) ➔ <strong>Aparelhos conectados</strong>.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-text">Toque em <strong>Conectar um aparelho</strong> e aponte a câmera para o QR Code acima.</div>
+      </div>
+    </div>
+
+    <p class="notice">
+      💡 <strong>Atenção:</strong> O QR code do WhatsApp expira após alguns segundos. Se expirar antes do escaneamento, solicite um novo link.
+    </p>
+
+    <div class="security-badge">
+      <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+      Conexão oficial criptografada de ponta a ponta
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Epiak Conversation Intelligence &bull; Todos os direitos reservados.
+  </footer>
+
+  <script>
+    (function () {
+      // 1. Parse query parameters or hash
+      const urlParams = new URLSearchParams(window.location.search);
+      let rawQr = urlParams.get('qr') || urlParams.get('code') || urlParams.get('data');
+
+      if (!rawQr && window.location.hash) {
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        rawQr = hashParams.get('qr') || hashParams.get('code') || hashParams.get('data');
+      }
+
+      const client = urlParams.get('client') || urlParams.get('nome') || urlParams.get('empresa');
+
+      // 2. Set Client Name if present
+      if (client) {
+        document.getElementById('clientName').textContent = client;
+        document.getElementById('clientBadgeContainer').style.display = 'block';
+        document.title = `Conectar ${client} — Epiak`;
+      }
+
+      // 3. Render QR Code
+      const qrBox = document.getElementById('qrcodeBox');
+      const qrWrapper = document.getElementById('qrWrapper');
+      const errorState = document.getElementById('errorState');
+      const stepsContainer = document.getElementById('stepsContainer');
+
+      if (!rawQr || !rawQr.trim()) {
+        qrWrapper.style.display = 'none';
+        stepsContainer.style.display = 'none';
+        errorState.style.display = 'block';
+        return;
+      }
+
+      try {
+        qrBox.innerHTML = '';
+        new QRCode(qrBox, {
+          text: rawQr.trim(),
+          width: 250,
+          height: 250,
+          colorDark: "#000000",
+          colorLight: "#FFFFFF",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      } catch (err) {
+        console.error('Error generating QR code client-side:', err);
+        qrBox.innerHTML = '<span style="color:#FF4444; font-size:0.8125rem;">Erro ao desenhar QR code. Verifique o link.</span>';
+      }
+    })();
+  </script>
+</body>
+</html>
