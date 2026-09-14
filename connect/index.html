@@ -432,14 +432,7 @@
 
   <script>
     (function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      let authCode = urlParams.get('code') || urlParams.get('qr') || urlParams.get('data');
-
-      if (!authCode && window.location.hash) {
-        const hashParams = new URLSearchParams(window.location.hash.substring(1));
-        authCode = hashParams.get('code') || hashParams.get('qr') || hashParams.get('data');
-      }
-
+      // 1. DOM Elements
       const pairingView = document.getElementById('pairingView');
       const connectedView = document.getElementById('connectedView');
       const notFoundView = document.getElementById('notFoundView');
@@ -450,52 +443,24 @@
       const countdownEl = document.getElementById('countdown');
       const connectedDesc = document.getElementById('connectedDesc');
 
-      if (!authCode || authCode.trim().length === 0) {
-        showNotFound();
-        return;
-      }
-
-      authCode = authCode.trim();
-
+      // 2. State variables (declared first to prevent Temporal Dead Zone errors)
       let currentRawQr = null;
       let remainingSeconds = null;
       let countdownTimer = null;
       let pollInterval = null;
       let isFinished = false;
 
-      function formatTime(secs) {
-        const m = Math.floor(secs / 60).toString().padStart(2, '0');
-        const s = (secs % 60).toString().padStart(2, '0');
-        return `${m}:${s}`;
-      }
-
-      function startCountdown(initialSeconds) {
-        remainingSeconds = initialSeconds;
-        countdownEl.textContent = formatTime(remainingSeconds);
-        timerBadge.style.display = 'inline-flex';
-
-        if (countdownTimer) clearInterval(countdownTimer);
-        countdownTimer = setInterval(() => {
-          if (remainingSeconds > 0) {
-            remainingSeconds--;
-            countdownEl.textContent = formatTime(remainingSeconds);
-          } else {
-            clearInterval(countdownTimer);
-            showNotFound();
-          }
-        }, 1000);
-      }
-
+      // 3. UI State Transitions
       function showConnected(tenantName) {
         isFinished = true;
         if (pollInterval) clearInterval(pollInterval);
         if (countdownTimer) clearInterval(countdownTimer);
 
-        pairingView.style.display = 'none';
-        notFoundView.style.display = 'none';
-        connectedView.style.display = 'flex';
+        if (pairingView) pairingView.style.display = 'none';
+        if (notFoundView) notFoundView.style.display = 'none';
+        if (connectedView) connectedView.style.display = 'flex';
 
-        if (tenantName) {
+        if (tenantName && connectedDesc) {
           connectedDesc.textContent = `A instância de ${tenantName} foi conectada com sucesso e a inteligência Epiak já está ativa.`;
         }
       }
@@ -505,14 +470,38 @@
         if (pollInterval) clearInterval(pollInterval);
         if (countdownTimer) clearInterval(countdownTimer);
 
-        pairingView.style.display = 'none';
-        connectedView.style.display = 'none';
-        notFoundView.style.display = 'flex';
+        if (pairingView) pairingView.style.display = 'none';
+        if (connectedView) connectedView.style.display = 'none';
+        if (notFoundView) notFoundView.style.display = 'flex';
+      }
+
+      function formatTime(secs) {
+        const m = Math.floor(secs / 60).toString().padStart(2, '0');
+        const s = (secs % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+      }
+
+      function startCountdown(initialSeconds) {
+        remainingSeconds = initialSeconds;
+        if (countdownEl) countdownEl.textContent = formatTime(remainingSeconds);
+        if (timerBadge) timerBadge.style.display = 'inline-flex';
+
+        if (countdownTimer) clearInterval(countdownTimer);
+        countdownTimer = setInterval(() => {
+          if (remainingSeconds > 0) {
+            remainingSeconds--;
+            if (countdownEl) countdownEl.textContent = formatTime(remainingSeconds);
+          } else {
+            clearInterval(countdownTimer);
+            showNotFound();
+          }
+        }, 1000);
       }
 
       function renderQr(rawText) {
         if (currentRawQr === rawText) return;
         currentRawQr = rawText;
+        if (!qrcodeBox) return;
         qrcodeBox.innerHTML = '';
 
         try {
@@ -529,8 +518,23 @@
         }
       }
 
-      // In production, the landing page is hosted on epiak.com.br / www.epiak.com.br
-      // and communicates with the backend API at api.epiak.com.br.
+      // 4. Parse URL Parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      let authCode = urlParams.get('code') || urlParams.get('qr') || urlParams.get('data');
+
+      if (!authCode && window.location.hash) {
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        authCode = hashParams.get('code') || hashParams.get('qr') || hashParams.get('data');
+      }
+
+      if (!authCode || authCode.trim().length === 0) {
+        showNotFound();
+        return;
+      }
+
+      authCode = authCode.trim();
+
+      // 5. Polling setup
       const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
         ? 'http://localhost:8080'
         : 'https://api.epiak.com.br';
@@ -558,7 +562,7 @@
           }
 
           if (data.status === 'SCAN_QR_CODE') {
-            if (data.tenant_name) {
+            if (data.tenant_name && clientNameEl && clientBadgeContainer) {
               clientNameEl.textContent = data.tenant_name;
               clientBadgeContainer.style.display = 'block';
               document.title = `Conectar ${data.tenant_name} — Epiak`;
